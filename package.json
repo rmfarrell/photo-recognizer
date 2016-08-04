@@ -1,0 +1,31 @@
+{
+  "name": "photo-recognizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmfarrell/photo-recognizer.git"
+  },
+  "author": "Ryan Farrell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rmfarrell/photo-recognizer/issues"
+  },
+  "homepage": "https://github.com/rmfarrell/photo-recognizer#readme",
+  "dependencies": {
+    "buffer": "^4.7.1",
+    "clarifai": "^1.2.1",
+    "dotenv": "^2.0.0",
+    "fs": "0.0.2",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "node-uuid": "^1.4.7",
+    "querystring": "^0.2.0",
+    "slackbots": "^0.5.1",
+    "url": "^0.11.0"
+  }
+}
