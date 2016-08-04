@@ -8,14 +8,17 @@ const url = require('url')
 const Buffer = require('buffer').Buffer
 const queryString = require('querystring')
 const Clarifai = require('clarifai')
-
-var bot = new SlackBot({
+const compile = require('string-template/compile')
+const bot = new SlackBot({
   token: process.env.SLACK_TOKEN,
-  name: 'Caption Bot'
+  name: process.env.APP_NAME
 })
+const messages = require('./messages.js')
 
 bot.on('start', function () {
   bot.on('message', (data) => {
+    let channel = data.channel
+    let emoji = `:${process.env.EMOJI}:`
 
     /**
      * Return if message contains no files
@@ -35,19 +38,34 @@ bot.on('start', function () {
 
     /**
      * Create a buffer forom the `thumb_360` property of the slack message.
-     * Then, get a list of tags from Clarifai.
+     * Then, get a list of tags from Clarifai and generate a message based on results
      */
     _createImageBufferFromSlack(data.file.thumb_360, process.env.SLACK_TOKEN)
       .then((buf) => {
         Clarifai.getTagsByImageBytes(buf.toString('base64'))
           .then((d) => {
-            console.log(d)
+            bot.postMessage(
+              data.channel,
+              _summarizeTags(d.results[0].result.tag.classes),
+              {icon_emoji: emoji}
+            )
           })
           .catch((err) => console.error(err))
       })
       .catch((err) => console.error(err))
   })
 })
+
+/**
+ * write a clever message based on an array of tags.
+ * @param {Array<String>} tags - an array of tags in descending order of relevance
+ * @return {String}
+ */
+function _summarizeTags (tags) {
+  let template = messages[Math.floor(Math.random() * messages.length)]
+  let messageTemplate = compile(template)
+  return messageTemplate(tags)
+}
 
 /**
  * read a thumbnail from slack and return a buffer

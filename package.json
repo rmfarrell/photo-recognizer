@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "node-uuid": "^1.4.7",
     "querystring": "^0.2.0",
     "slackbots": "^0.5.1",
+    "string-template": "^1.0.0",
     "url": "^0.11.0"
   }
 }
