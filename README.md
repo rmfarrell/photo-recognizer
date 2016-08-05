@@ -2,6 +2,7 @@
 Slackbot which uses the Clarifai image recognition api to automatically comment on photos as they are uploaded in a channel.
 
 ## Demo
+![Autocaptioner demo](demo.png?raw=true)
 
 
 ## Setup
