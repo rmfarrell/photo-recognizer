@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config({silent: true})
 const SlackBot = require('slackbots')
 const fs = require('fs')
 const https = require('https')
