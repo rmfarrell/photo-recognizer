@@ -1,3 +1,9 @@
+/**
+ * Templates that use `string-template` to consume the Clarifai tags.
+ * Template stings are selected randomly.
+ * The numbers (e.g. {2}) correspond to the index in Clarifai's tag stack
+ * Higher numbers correspond with less accuracy but greater specificity.
+ */
 module.exports = [
   "Now that's what I call {3}!",
   "That's what I call a {2} situation!",
