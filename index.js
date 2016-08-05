@@ -15,6 +15,16 @@ const bot = new SlackBot({
 })
 const messages = require('./messages.js')
 
+/**
+ * Create a server. This is necessary for Heroku
+ */
+http.createServer((req, res) => {
+  return res.end('hit')
+}).listen(process.env.PORT || 5000)
+
+/**
+ * Listen for messages and if they have a thumb attached, comment on it
+ */
 bot.on('start', function () {
   bot.on('message', (data) => {
     let channel = data.channel
