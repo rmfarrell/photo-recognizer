@@ -1,0 +1,27 @@
+name: Autocaption
+config:
+  - name: CLARIFAI_ID
+    friendly_name: Clarifai ID
+    type: text
+    default: XXX
+    global: true
+  - name: CLARIFAI_SECRET
+    friendly_name: Clarifai Secret
+    type: secret
+    default: XXX
+    global: true
+  - name: EMOJI
+    friendly_name: Emoji
+    type: text
+    default: robot_face
+    global: true
+  - name: APP_NAME
+    friendly_name: APP Name
+    type: text
+    default: Autocaption
+    global: true
+  - name: PORT
+    friendly_name: Port
+    default: 5000
+    type: text
+    global: true
